@@ -1,0 +1,113 @@
+{% extends 'base_dashboard.html' %}
+
+{% block dashboard_content %}
+<!-- Welcome & Action Bar -->
+<div class="md:flex md:items-center md:justify-between mb-8">
+    <div>
+        <h1 class="text-2xl font-bold text-slate-900">Workspace Overview</h1>
+        <p class="text-sm text-slate-500 mt-1">Here is what is happening across your workspace today.</p>
+    </div>
+    <!-- Quick Actions -->
+    <div class="mt-4 md:mt-0 flex gap-3">
+        <button class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 shadow-sm transition-colors">
+            ⚙️ Edit Dashboard Layout
+        </button>
+        <button class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 shadow-sm transition-colors">
+            ＋ Invite Teammate
+        </button>
+    </div>
+</div>
+
+<!-- Quick Stats / Widget Group 1 -->
+<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-8">
+    <!-- Stat Card Widget 1 -->
+    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm relative group">
+        <span class="absolute top-4 right-4 text-xs font-semibold text-slate-400 group-hover:text-blue-600 cursor-pointer transition-colors" title="Pin / Unpin Widget">📌</span>
+        <p class="text-sm font-medium text-slate-500">Active Members</p>
+        <p class="text-3xl font-bold text-slate-900 mt-2">12</p>
+        <span class="text-xs text-emerald-600 font-medium mt-1 inline-block">↑ 2 added this week</span>
+    </div>
+
+    <!-- Stat Card Widget 2 -->
+    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm relative group">
+        <span class="absolute top-4 right-4 text-xs font-semibold text-slate-400 group-hover:text-blue-600 cursor-pointer transition-colors" title="Pin / Unpin Widget">📌</span>
+        <p class="text-sm font-medium text-slate-500">Monthly Run Rate</p>
+        <p class="text-3xl font-bold text-slate-900 mt-2">$2,450</p>
+        <span class="text-xs text-slate-400 font-medium mt-1 inline-block">Renewals safe</span>
+    </div>
+
+    <!-- Stat Card Widget 3 -->
+    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm relative group">
+        <span class="absolute top-4 right-4 text-xs font-semibold text-slate-400 group-hover:text-blue-600 cursor-pointer transition-colors" title="Pin / Unpin Widget">📌</span>
+        <p class="text-sm font-medium text-slate-500">Resource Utilization</p>
+        <p class="text-3xl font-bold text-slate-900 mt-2">64%</p>
+        <span class="text-xs text-amber-600 font-medium mt-1 inline-block">Within optimal threshold</span>
+    </div>
+</div>
+
+<!-- Main Customizable Grid Layout -->
+<div class="grid gap-6 lg:grid-cols-12">
+    
+    <!-- Widget Block 1 (Table view: Perfect precursor for Owner's Staff View) -->
+    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 lg:col-span-8 relative group">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+            <div>
+                <h3 class="text-base font-bold text-slate-900">Staff Members & Directory</h3>
+                <p class="text-xs text-slate-400 mt-0.5">Visible to Owner Role</p>
+            </div>
+            <span class="text-xs font-semibold text-slate-400 group-hover:text-blue-600 cursor-pointer transition-colors" title="Pin / Unpin Widget">📌</span>
+        </div>
+
+        <!-- Table Responsive Container -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-slate-100 text-sm text-left">
+                <thead>
+                    <tr class="text-slate-400 text-xs uppercase font-semibold">
+                        <th class="pb-3">Name</th>
+                        <th class="pb-3">Role</th>
+                        <th class="pb-3">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                    <tr>
+                        <td class="py-3 font-medium text-slate-800">Sarah Jenkins</td>
+                        <td class="py-3 text-slate-600">Administrator</td>
+                        <td class="py-3"><span class="px-2 py-0.5 text-xs font-semibold text-emerald-700 bg-emerald-50 rounded-full">Active</span></td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 font-medium text-slate-800">David Miller</td>
+                        <td class="py-3 text-slate-600">Billing Manager</td>
+                        <td class="py-3"><span class="px-2 py-0.5 text-xs font-semibold text-slate-700 bg-slate-100 rounded-full">Inactive</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Widget Block 2 (List view: Activity Logger) -->
+    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 lg:col-span-4 relative group">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+            <h3 class="text-base font-bold text-slate-900">Recent Workspace Actions</h3>
+            <span class="text-xs font-semibold text-slate-400 group-hover:text-blue-600 cursor-pointer transition-colors" title="Pin / Unpin Widget">📌</span>
+        </div>
+
+        <ul class="space-y-4">
+            <li class="flex gap-3 text-sm">
+                <span class="text-blue-600 mt-0.5">●</span>
+                <div>
+                    <p class="font-medium text-slate-800">Sarah Jenkins updated settings</p>
+                    <p class="text-xs text-slate-400">2 hours ago</p>
+                </div>
+            </li>
+            <li class="flex gap-3 text-sm">
+                <span class="text-blue-600 mt-0.5">●</span>
+                <div>
+                    <p class="font-medium text-slate-800">Invited new user `john@example.com`</p>
+                    <p class="text-xs text-slate-400">1 day ago</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+{% endblock dashboard_content %}

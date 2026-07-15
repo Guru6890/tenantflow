@@ -6,6 +6,7 @@ import uuid
 from django.utils.translation import gettext_lazy as _
 
 class Permission(models.Model):
+    id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     codename = models.CharField(max_length=100, unique=True)
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
@@ -38,7 +39,7 @@ class Role(models.Model):
         ordering = ['name']
 
     def __str__(self):
-        return f'{self.name}-{self.workspace}'
+        return f'{self.name} (workspace: {self.workspace_id})'
 
 class RolePermission(models.Model):
     role = models.ForeignKey(Role, on_delete=models.CASCADE, related_name='permissions')
@@ -46,4 +47,6 @@ class RolePermission(models.Model):
 
     class Meta:
         db_table = 'role_permissions'
-        unique_together = ('role', 'permission')
+        constraints = [
+            models.UniqueConstraint(fields=['role', 'permission'], name='unique_role_permission')
+        ]

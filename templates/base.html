@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SaaSify - Grow Your Business{% endblock %}</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans flex flex-col min-h-screen">
+
+    <!-- Navigation Header -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                        SaaSify
+                    </a>
+                </div>
+                
+                <!-- Main Nav Links -->
+                <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+                    <a href="#features" class="hover:text-blue-600 transition-colors">Features</a>
+                    <a href="#about" class="hover:text-blue-600 transition-colors">About</a>
+                    <a href="#pricing" class="hover:text-blue-600 transition-colors">Pricing</a>
+                </nav>
+
+                <!-- Auth Buttons -->
+                <div class="flex items-center space-x-4">
+                    <a href="{% url 'register' %}" class="text-sm font-medium text-slate-600 hover:text-slate-900">Sign in</a>
+                    <a href="#" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 shadow-sm transition-colors">
+                        Start Free Trial
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+        {% block content %}
+        <!-- Child templates inject content here -->
+        {% endblock content %}
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="bg-white border-t border-slate-100 py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:flex md:items-center md:justify-between text-slate-500 text-sm">
+            <p>&copy; 2026 SaaSify Inc. All rights reserved.</p>
+            <div class="mt-4 md:mt-0 flex justify-center space-x-6">
+                <a href="#" class="hover:text-slate-900">Privacy Policy</a>
+                <a href="#" class="hover:text-slate-900">Terms of Service</a>
+                <a href="#" class="hover:text-slate-900">Contact Support</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

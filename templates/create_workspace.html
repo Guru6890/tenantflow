@@ -1,0 +1,48 @@
+{% extends 'auth_base.html' %}
+
+{% block title %}Create Your Workspace - SaaSify{% endblock %}
+
+{% block auth_content %}
+<div class="text-center mb-6">
+    <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-600 text-xl">
+        🏢
+    </div>
+    <h2 class="mt-4 text-2xl font-bold tracking-tight text-slate-900">
+        Create a new workspace
+    </h2>
+    <p class="mt-2 text-sm text-slate-500">
+        Workspaces are shared environments where you can manage your projects and collaborate with your team.
+    </p>
+</div>
+
+<form class="space-y-5" action="#" method="POST">
+    {% csrf_token %}
+    
+    <div>
+        <label for="name" class="block text-sm font-medium text-slate-700">Workspace Name</label>
+        <div class="mt-1">
+            <input id="name" name="name" type="text" placeholder="e.g., Acme Corp Operations" required 
+                class="block w-full rounded-lg border border-slate-200 px-3 py-2 text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 text-sm">
+        </div>
+    </div>
+
+    <div>
+        <label for="company_size" class="block text-sm font-medium text-slate-700">Company Size</label>
+        <div class="mt-1">
+            <select id="company_size" name="company_size" 
+                class="block w-full rounded-lg border border-slate-200 px-3 py-2 text-slate-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 text-sm bg-white">
+                <option value="1">Just me</option>
+                <option value="2-10">2 - 10 employees</option>
+                <option value="11-50">11 - 50 employees</option>
+                <option value="51+">51+ employees</option>
+            </select>
+        </div>
+    </div>
+
+    <div>
+        <button type="submit" class="flex w-full justify-center rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-colors">
+            Launch Workspace
+        </button>
+    </div>
+</form>
+{% endblock auth_content %}

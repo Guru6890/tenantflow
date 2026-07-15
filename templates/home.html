@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-b from-blue-50/50 to-white py-20 lg:py-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center lg:text-left lg:grid lg:grid-cols-12 lg:gap-8 items-center">
+        <div class="lg:col-span-6">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                Manage your multi-tenant operations <span class="text-blue-600">effortlessly</span>.
+            </h1>
+            <p class="mt-6 text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0">
+                SaaSify scales your workspace productivity. Built seamlessly with secure data isolation, custom subdomains, and lightning-fast collaboration tools for scaling teams.
+            </p>
+            <div class="mt-10 sm:flex sm:justify-center lg:justify-start gap-4">
+                <a href="#pricing" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-blue-600 hover:bg-blue-700 shadow-md transition-all">
+                    View Pricing Plans
+                </a>
+                <a href="#features" class="mt-3 sm:mt-0 inline-flex items-center justify-center px-6 py-3 border border-slate-200 text-base font-medium rounded-xl text-slate-700 bg-white hover:bg-slate-50 shadow-sm transition-all">
+                    Explore Features
+                </a>
+            </div>
+        </div>
+        <!-- Right side visual placeholder -->
+        <div class="mt-16 lg:mt-0 lg:col-span-6 flex justify-center">
+            <div class="w-full max-w-md lg:max-w-none bg-gradient-to-tr from-indigo-100 to-blue-100 aspect-video rounded-2xl shadow-xl border border-white/40 p-6 flex flex-col justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+                    <span class="w-3 h-3 rounded-full bg-green-400"></span>
+                </div>
+                <div class="h-full mt-4 flex items-center justify-center text-slate-400 text-sm font-mono">
+                    [ Interactive Dashboard Preview ]
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-20 bg-white border-y border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Everything you need to scale</h2>
+            <p class="mt-4 text-slate-600">Engineered with high-performance architectures to give your clients the fast, secure experience they demand.</p>
+        </div>
+
+        <div class="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Feature 1 -->
+            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-all">
+                <div class="w-10 h-10 bg-blue-100 text-blue-600 flex items-center justify-center rounded-lg font-bold text-lg mb-4">⇄</div>
+                <h3 class="text-lg font-semibold text-slate-900">Strict Tenant Isolation</h3>
+                <p class="mt-2 text-sm text-slate-600">Your data is completely segregated at the database layer, ensuring absolute privacy and enterprise-grade compliance.</p>
+            </div>
+            <!-- Feature 2 -->
+            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-all">
+                <div class="w-10 h-10 bg-indigo-100 text-indigo-600 flex items-center justify-center rounded-lg font-bold text-lg mb-4">⚡</div>
+                <h3 class="text-lg font-semibold text-slate-900">Custom Subdomains</h3>
+                <p class="mt-2 text-sm text-slate-600">Give your clients a branded experience right away with dynamic, custom subdomains (`tenant.yourdomain.com`).</p>
+            </div>
+            <!-- Feature 3 -->
+            <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:shadow-md transition-all">
+                <div class="w-10 h-10 bg-emerald-100 text-emerald-600 flex items-center justify-center rounded-lg font-bold text-lg mb-4">📊</div>
+                <h3 class="text-lg font-semibold text-slate-900">Real-Time Metrics</h3>
+                <p class="mt-2 text-sm text-slate-600">Track user behaviors, performance overheads, and active allocations straight from your central dashboard.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-20 bg-slate-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Built for Modern Businesses</h2>
+        <p class="mt-6 text-lg leading-relaxed text-slate-600">
+            SaaSify started as a mission to eliminate the overhead of standard application hosting setups. We believe multi-tenant systems shouldn't require complex configurations or massive dev teams to manage. By wrapping security, isolation, and user onboarding into a beautiful wrapper, we empower companies to focus entirely on building value for their own customers.
+        </p>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="py-20 bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Simple, transparent pricing</h2>
+            <p class="mt-4 text-slate-600">Choose the right tier to kickstart your ecosystem, scale anytime as your customer base expands.</p>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-3 max-w-md mx-auto lg:max-w-none">
+            <!-- Plan 1: Starter -->
+            <div class="border border-slate-200 rounded-2xl p-8 flex flex-col justify-between hover:border-slate-300 transition-all">
+                <div>
+                    <h3 class="text-lg font-semibold text-slate-900">Starter</h3>
+                    <p class="mt-4 text-slate-500 text-sm">Perfect for individuals and test sandboxes.</p>
+                    <div class="mt-6 flex items-baseline">
+                        <span class="text-4xl font-extrabold tracking-tight text-slate-900">$19</span>
+                        <span class="ml-1 text-sm text-slate-500">/month</span>
+                    </div>
+                    <ul class="mt-8 space-y-4 text-sm text-slate-600">
+                        <li class="flex items-center gap-2">✓ Up to 3 Tenants</li>
+                        <li class="flex items-center gap-2">✓ Basic Analytics</li>
+                        <li class="flex items-center gap-2">✓ Shared Domain Hosting</li>
+                    </ul>
+                </div>
+                <a href="#" class="mt-8 block w-full text-center py-2 px-4 border border-blue-600 rounded-lg text-sm font-medium text-blue-600 hover:bg-blue-50 transition-colors">Get Started</a>
+            </div>
+
+            <!-- Plan 2: Pro (Highlighted) -->
+            <div class="border-2 border-blue-600 rounded-2xl p-8 flex flex-col justify-between relative bg-slate-50/50 shadow-md">
+                <span class="absolute top-0 right-6 transform -translate-y-1/2 bg-blue-600 text-white text-xs uppercase font-extrabold tracking-wider px-3 py-1 rounded-full">Most Popular</span>
+                <div>
+                    <h3 class="text-lg font-semibold text-slate-900">Growth</h3>
+                    <p class="mt-4 text-slate-500 text-sm">Ideal for growing teams and startups.</p>
+                    <div class="mt-6 flex items-baseline">
+                        <span class="text-4xl font-extrabold tracking-tight text-slate-900">$49</span>
+                        <span class="ml-1 text-sm text-slate-500">/month</span>
+                    </div>
+                    <ul class="mt-8 space-y-4 text-sm text-slate-600">
+                        <li class="flex items-center gap-2 font-medium text-slate-900">✓ Up to 25 Tenants</li>
+                        <li class="flex items-center gap-2">✓ Custom Subdomains</li>
+                        <li class="flex items-center gap-2">✓ Advanced Metric Dashboards</li>
+                        <li class="flex items-center gap-2">✓ Priority Email Support</li>
+                    </ul>
+                </div>
+                <a href="#" class="mt-8 block w-full text-center py-2 px-4 bg-blue-600 rounded-lg text-sm font-medium text-white hover:bg-blue-700 shadow-sm transition-colors">Start Free Trial</a>
+            </div>
+
+            <!-- Plan 3: Enterprise -->
+            <div class="border border-slate-200 rounded-2xl p-8 flex flex-col justify-between hover:border-slate-300 transition-all">
+                <div>
+                    <h3 class="text-lg font-semibold text-slate-900">Scale</h3>
+                    <p class="mt-4 text-slate-500 text-sm">For massive ecosystems needing robust isolation.</p>
+                    <div class="mt-6 flex items-baseline">
+                        <span class="text-4xl font-extrabold tracking-tight text-slate-900">$149</span>
+                        <span class="ml-1 text-sm text-slate-500">/month</span>
+                    </div>
+                    <ul class="mt-8 space-y-4 text-sm text-slate-600">
+                        <li class="flex items-center gap-2">✓ Unlimited Tenants</li>
+                        <li class="flex items-center gap-2">✓ Custom Domain Mapping</li>
+                        <li class="flex items-center gap-2">✓ Dedicated DB Instances</li>
+                        <li class="flex items-center gap-2">✓ 24/7 Phone & Slack Support</li>
+                    </ul>
+                </div>
+                <a href="#" class="mt-8 block w-full text-center py-2 px-4 border border-blue-600 rounded-lg text-sm font-medium text-blue-600 hover:bg-blue-50 transition-colors">Contact Sales</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
