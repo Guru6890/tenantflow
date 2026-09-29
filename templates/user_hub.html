@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}Account Hub - SaaSify{% endblock %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<main class="flex-grow max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10">
+    <!-- User Profile Hero -->
+    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+            <div class="w-14 h-14 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xl font-bold">
+                {{ user.email|first|upper }}
+            </div>
+            <div>
+                <h1 class="text-xl font-bold text-slate-900">{{ user.get_full_name|default:user.email }}</h1>
+                <p class="text-xs text-slate-500">Logged in as <span class="font-medium text-slate-700">{{ user.email }}</span></p>
+            </div>
+        </div>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="text-xs font-semibold text-slate-500 hover:text-red-600 transition border border-slate-200 px-3 py-1.5 rounded-lg">
+                Sign Out
+            </button>
+        </form>
+    </div>
+
+    <div class="mt-10">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-lg font-bold text-slate-900">Your Workspaces</h2>
+            <a href="{% url 'create_workspace' %}" class="px-4 py-2 bg-indigo-600 text-white text-sm font-semibold rounded-lg shadow hover:bg-indigo-700 transition flex items-center gap-1">
+                <span class="text-lg leading-none">+</span> Create Workspace
+            </a>
+        </div>
+
+        {% if user_workspaces %}
+            <!-- Existing Workspaces List -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {% for tenant in user_workspaces %}
+                <div class="bg-white p-5 rounded-xl border border-slate-200 hover:border-indigo-300 transition shadow-sm flex items-center justify-between">
+                    <div>
+                        <h3 class="font-bold text-slate-900">{{ tenant.name }}</h3>
+                        <p class="text-xs text-slate-500 mt-1">Type: <span class="capitalize">{{ tenant.business_type }}</span></p>
+                    </div>
+                    <a href="{% url 'tenant_dashboard' tenant_slug=tenant.slug %}" class="px-3 py-1.5 bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 text-xs font-semibold rounded-lg transition">
+                        Open Dashboard &rarr;
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <!-- No Workspace Empty State -->
+            <div class="bg-slate-100/70 border-2 border-dashed border-slate-200 rounded-2xl p-12 text-center">
+                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto text-slate-400 shadow-sm mb-4">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                    </svg>
+                </div>
+                <h3 class="text-base font-bold text-slate-800">No active workspaces found</h3>
+                <p class="text-sm text-slate-500 max-w-sm mx-auto mt-1">You aren't linked to any tenant organization yet. Set up your first workspace to unlock your tools.</p>
+                <a href="{% url 'create_workspace' %}" class="mt-6 inline-block px-5 py-2.5 bg-indigo-600 text-white font-semibold text-sm rounded-lg shadow hover:bg-indigo-700 transition">
+                    Create New Workspace
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</main>
+
+{% include 'includes/footer.html' %}
+{% endblock %}

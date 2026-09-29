@@ -1,6 +1,8 @@
 # tenancy/utils.py
 import contextvars
 
+from authorization.models import Module, WorkspaceModule
+
 _current_workspace_var = contextvars.ContextVar('current_workspace', default=None)
 
 def get_current_workspace():
@@ -25,11 +27,12 @@ DEFAULT_MODULES_BY_TYPE = {
 }
 
 def get_default_modules(business_type: str):
-    return DEFAULT_MODULES_BY_TYPE.get(business_type, ['crm', 'billing'])
+    return DEFAULT_MODULES_BY_TYPE.get(business_type, 'other')
 
 
 def initialize_workspace_modules(workspace):
     """Call this after workspace creation"""
     default_modules = get_default_modules(workspace.business_type)
-    workspace.settings = {"modules": default_modules}
-    workspace.save(update_fields=['settings'])
+    for module_name in default_modules:
+        module = Module.objects.get(name=module_name)
+        WorkspaceModule.objects.create(workspace=workspace, module=module)

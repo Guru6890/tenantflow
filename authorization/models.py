@@ -5,20 +5,49 @@ import uuid
 
 from django.utils.translation import gettext_lazy as _
 
+class Module(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    description = models.TextField(blank=True, null=True)
+    is_core = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+    
+class WorkspaceModule(models.Model):
+    workspace = models.ForeignKey('tenancy.Workspace', on_delete=models.CASCADE, related_name='modules')
+    module = models.ForeignKey(Module, on_delete=models.CASCADE, related_name='workspaces')
+    is_active = models.BooleanField(default=True)
+    activated_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['workspace', 'module']
+            )
+        ]
+        
 class Permission(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
+    module = models.ForeignKey(Module, on_delete=models.CASCADE, related_name='permissions')
     codename = models.CharField(max_length=100, unique=True)
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
-    module = models.CharField(max_length=100, blank=True)
 
     class Meta:
-        db_table = 'permissions'
-        verbose_name = _('permission')
-        verbose_name_plural = _('permissions')
+        constraints = [
+            models.UniqueConstraint(
+                fields=['module', 'codename'],
+                name='unique_permission_per_module'
+            )
+        ]
+        ordering = ['module__name', 'codename']
 
     def __str__(self):
-        return f'{self.name}-{self.codename}'
+        return f'{self.module.name}-{self.codename}'
     
 class Role(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
@@ -29,7 +58,6 @@ class Role(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        db_table = 'roles'
         constraints = [
             models.UniqueConstraint(
                 fields=['workspace', 'name'],
@@ -46,7 +74,6 @@ class RolePermission(models.Model):
     permission = models.ForeignKey(Permission, on_delete=models.CASCADE)
 
     class Meta:
-        db_table = 'role_permissions'
         constraints = [
             models.UniqueConstraint(fields=['role', 'permission'], name='unique_role_permission')
         ]

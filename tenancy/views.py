@@ -1,3 +1,4 @@
+#tenancy/views.py
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
@@ -18,7 +19,7 @@ def create_workspace_view(request):
     
     if request.method == 'POST':
         form = WorkspaceCreationForm(request.POST)
-        WorkspaceService.create_workspace(request, form)
+        WorkspaceService.create(request, form)
         return redirect('tenancy:dashboard')
     else:
         form = WorkspaceCreationForm()

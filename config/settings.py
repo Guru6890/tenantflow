@@ -42,6 +42,11 @@ INSTALLED_APPS = [
     'authorization',
     'identity',
     'tenancy',
+
+    'inventory.catalog',
+    'inventory.core',
+    'inventory.locations',
+    'inventory.stocks',
 ]
 
 MIDDLEWARE = [

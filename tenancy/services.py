@@ -11,7 +11,7 @@ class WorkspaceService:
     """Service layer for Workspace related business logic"""
 
     @staticmethod
-    def create_workspace(request, form):
+    def create(request, form):
         """
         Complete workspace creation flow for new users.
         Returns redirect response.
