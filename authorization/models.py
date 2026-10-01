@@ -26,7 +26,8 @@ class WorkspaceModule(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['workspace', 'module']
+                fields=['workspace', 'module'],
+                name='unique_module_per_workspace'
             )
         ]
         

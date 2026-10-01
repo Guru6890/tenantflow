@@ -43,8 +43,7 @@ INSTALLED_APPS = [
     'identity',
     'tenancy',
 
-    'inventory.catalog',
-    'inventory.core',
+    'inventory.catalogue',
     'inventory.locations',
     'inventory.stocks',
 ]

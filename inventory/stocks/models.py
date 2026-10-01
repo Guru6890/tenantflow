@@ -209,11 +209,6 @@ class TransferItem(TenantBaseModel):
             models.CheckConstraint(
                 condition=models.Q(quantity__gt=Decimal('0.000')),
                 name='transfer_item_quantity_non_negative'
-            ),
-
-            models.CheckConstraint(
-                condition=models.Q(variant.product == models.F('product')),
-                name='variant_product_relation'
             )
         ]
 
